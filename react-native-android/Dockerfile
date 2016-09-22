@@ -8,6 +8,7 @@ MAINTAINER Minh Ha <hi@minh.im>
 
 RUN \
     apt-get update && apt-get install \
+    apt-utils \
     software-properties-common \
     python-software-properties \
     build-essential \
@@ -15,6 +16,7 @@ RUN \
     curl \
     git \
     wget \
+    unzip \
     -y --no-install-recommends
 
 # ——————————
