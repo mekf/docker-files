@@ -80,40 +80,12 @@ ENV GRADLE_HOME /usr/lib/gradle
 ENV PATH $PATH:$GRADLE_HOME/bin
 
 # ——————————
-# Node and global packages
-# ——————————
-
-ENV NODE_VERSION 6.5.0
-
-RUN \
-    cd && \
-    wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
-    tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
-    mv node-v${NODE_VERSION}-linux-x64 /opt/node && \
-    rm node-v${NODE_VERSION}-linux-x64.tar.gz
-
-ENV PATH ${PATH}:/opt/node/bin
-
-# ——————————
-# Install Basic React-Native packages
-# ——————————
-
-RUN \
-    npm install npm -g && \
-    npm install react-native-cli -g && \
-    npm install rnpm -g
-
-ENV LANG en_US.UTF-8
-
-RUN which android
-RUN which adb
-RUN node --version
-RUN npm --version
-
-# ——————————
 # Clean up
 # ——————————
 
 RUN \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get autoremove -y && apt-get clean
+
+RUN which android
+RUN which adb
